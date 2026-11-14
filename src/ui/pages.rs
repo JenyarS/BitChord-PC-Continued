@@ -481,7 +481,7 @@ fn search(app: &mut App, ui: &mut Ui, q: &str, now: f64) {
             for (i, t) in r.tracks.iter().take(4).enumerate() {
                 let o = RowOpts { pick, ..rows.opts(liked, t, None, false) };
                 if track_row(ui, t, &o, acts).clicked() {
-                    acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Play(r.tracks.clone(), i) });
+                    acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Radio(t.clone()) });
                 }
             }
         });
@@ -495,7 +495,7 @@ fn search(app: &mut App, ui: &mut Ui, q: &str, now: f64) {
         for (i, t) in r.tracks.iter().enumerate().skip(4) {
             let o = RowOpts { pick, ..rows.opts(liked, t, None, true) };
             if track_row(ui, t, &o, acts).clicked() {
-                acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Play(r.tracks.clone(), i) });
+                acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Radio(t.clone()) });
             }
         }
     }
