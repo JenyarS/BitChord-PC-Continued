@@ -523,7 +523,7 @@ fn search(app: &mut App, ui: &mut Ui, q: &str, now: f64) {
                 // The album beside the artist, as every other song row shows it.
                 let o = RowOpts { pick, ..rows.opts(liked, t, None, true) };
                 if track_row(ui, t, &o, acts).clicked() {
-                    acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Play(r.tracks.clone(), i) });
+                    acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Radio(t.clone()) });
                 }
             }
         });
@@ -537,7 +537,7 @@ fn search(app: &mut App, ui: &mut Ui, q: &str, now: f64) {
         for (i, t) in r.tracks.iter().enumerate().skip(4) {
             let o = RowOpts { pick, ..rows.opts(liked, t, None, true) };
             if track_row(ui, t, &o, acts).clicked() {
-                acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Play(r.tracks.clone(), i) });
+                acts.push(if pick { Action::TransferPick(t.clone()) } else { Action::Radio(t.clone()) });
             }
         }
     }

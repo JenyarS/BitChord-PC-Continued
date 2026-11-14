@@ -794,6 +794,8 @@ fn options_menu(app: &mut App, ui: &mut Ui, rect: Rect, track: &crate::model::Tr
     egui::Popup::menu(&resp).close_behavior(egui::PopupCloseBehavior::CloseOnClickOutside).show(|ui| {
         ui.set_width(270.0);
         ui.spacing_mut().item_spacing = vec2(0.0, 0.0);
+        let max_h = (ui.ctx().content_rect().height() - 140.0).max(200.0);
+        egui::ScrollArea::vertical().max_height(max_h).auto_shrink([false, true]).show(ui, |ui| {
         ui.add_space(4.0);
         // Lyrics first: the source, translation and timing are what the menu is for
         // while the lyrics are up.
@@ -824,6 +826,7 @@ fn options_menu(app: &mut App, ui: &mut Ui, rect: Rect, track: &crate::model::Tr
             }
         }
         ui.add_space(4.0);
+        });
     });
 }
 
